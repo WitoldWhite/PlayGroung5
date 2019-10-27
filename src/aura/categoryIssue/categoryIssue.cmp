@@ -1,0 +1,23 @@
+<!--
+ - Created by Witold on 27.10.2019.
+ -->
+<aura:component controller="issueCategoryController" description="categoryIssue"
+                implements="forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="RepaiActions" type="RepairAction__c[]" access="global"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <div class="page-section page-main">
+        <lightning:select aura:id="select" name="select" label="Select a category" onchange="{! c.onChange }">
+            <option value="">choose one...</option>
+            <option value="Engine">Engine</option>
+            <option value="Body">Body</option>
+            <option value="Suspension">Suspension</option>
+            <option value="Electric">Electric</option>
+            <option value="Other">Other</option>
+        </lightning:select>
+            <aura:iteration var="item" items="{!v.RepaiActions}" indexVar="index">
+
+                <lightning:formattedText value="{!item.Name}"></lightning:formattedText><br/>
+
+            </aura:iteration>
+    </div>
+</aura:component>
